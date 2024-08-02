@@ -16,15 +16,28 @@ with open(og_file, 'r') as f:
 
 # The YAML file lists acceptance values as 'dependent_variables'
 # and mass and lifetime values as 'independent_variables'
-og_acceptance_list = og_data.get('dependent_variables', {})[0].get('values')
-og_mass_list = og_data.get('independent_variables', {})[0].get('values')
-og_lifetime_list = og_data.get('independent_variables', {})[1].get('values')
+og_acceptance_dicts = og_data.get('dependent_variables', {})[0].get('values')
+og_mass_dicts = og_data.get('independent_variables', {})[0].get('values')
+og_lifetime_dicts = og_data.get('independent_variables', {})[1].get('values')
 
-og_data_list = []
+# Each entry in the above lists is a dictionary,
+# we only need the values
 
-for i, acc in enumerate(og_acceptance_list):
-	list_entry = [acc, og_mass_list[i], og_lifetime_list[i]]
-	og_data_list.append(list_entry)
+og_acceptance_list = []
+og_mass_list = []
+og_lifetime_list = []
+
+for a in og_acceptance_dicts:
+	for key, value in a.items():
+		 og_acceptance_list.append(value)
+
+for m in og_mass_dicts:
+	for key, value in m.items():
+		og_mass_list.append(value)
+
+for t in og_lifetime_dicts:
+	for key, value in t.items():
+		og_lifetime_list.append(value)
 
 #TODO All this section should be read in from RESULTS file
 sparticle_mass = 400 #GeV
@@ -48,4 +61,4 @@ og_acceptance = 0
 #print('Lifetime bin =', lifetime_bin)
 #print('Acceptance in original paper =', og_acceptance)
 
-print(og_data_list)
+print(type(og_acceptance_list[0]))
