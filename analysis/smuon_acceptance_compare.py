@@ -10,7 +10,7 @@ import yaml
 #del(og_data[0])
 
 # --- YAML ---
-og_file = "HEPData-ins1831504-v2-Smuon_acceptance.yaml"
+og_file = "analysis/HEPData-ins1831504-v2-Smuon_acceptance.yaml"
 with open(og_file, 'r') as f:
     og_data = yaml.load(f, Loader=yaml.SafeLoader) 
 
