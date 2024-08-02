@@ -43,7 +43,7 @@ while i < len(og_acceptance_list):
 #TODO All this section should be read in from RESULTS file
 sparticle_mass = 400 #GeV
 sparticle_lifetime = 0 #log_10(ns)
-sparticle_acceptance = 0
+sparticle_acceptance = 0.3
 uncertainty = 0
 
 mass_bin = 0
