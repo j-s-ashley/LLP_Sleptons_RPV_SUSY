@@ -42,24 +42,23 @@ while i < len(og_acceptance_list):
 
 #TODO All this section should be read in from RESULTS file
 sparticle_mass = 400 #GeV
-sparticle_lifetime = 0 #log_10(ns)
+sparticle_lifetime = 0.5 #log_10(ns)
 sparticle_acceptance = 0.3
 uncertainty = 0
 
+# Find mass/lifetime combo in OG data
 mass_bin = 0
 lifetime_bin = 0
 og_acceptance = 0
 
-#for row in og_data:
-#    if sparticle_mass <= row[0]:
-#        mass_bin = row[0]
-#        if sparticle_lifetime <= row[1]:
-#            lifetime_bin = row[1]
-#            og_acceptance = row[2]
-#            break
+for entry in og_data_list:
+    if sparticle_mass <= entry[1]:
+        if sparticle_lifetime == entry[2]:
+            og_acceptance = entry[0]
+            break
 
 #print('Mass bin =', mass_bin)
 #print('Lifetime bin =', lifetime_bin)
 #print('Acceptance in original paper =', og_acceptance)
 
-print(og_data_list)
+print(og_acceptance)
