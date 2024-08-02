@@ -4,6 +4,7 @@ import pyhepmc.io as ihep
 import pyhepmc.view as vhep
 import ROOT
 import math
+import yaml
 from ROOT import TLorentzVector
 from ROOT import TEfficiency, TFile, TH1F, TGraph2DErrors, gStyle, gROOT, TColor, TLatex
 from functools import reduce
@@ -336,6 +337,13 @@ L = 139 #1/fb
 n_gen=20000 # # of generated events
 print("Expected events: ", (area*sigma*L)/n_gen, "  +/- ",((error*sigma*L)/n_gen), " events")
 
+results = {
+        'acceptance': count/n_gen,
+        'efficiency': bincontent/count,
+        'yield': bincontent/n_gen}
+
 print("Acceptance is ", count/20000)
 print("Effiencey is ", bincontent/count)
 print("Yield is ", bincontent/20000)
+
+yaml.dump(results)
