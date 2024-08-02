@@ -40,29 +40,31 @@ while i < len(og_acceptance_list):
 	og_data_list.append(data_entry)
 	i += 1
 
-#TODO All this section should be read in from RESULTS file
+#TODO These values should be read in from RESULTS file
 sparticle_mass = 400 #GeV
 sparticle_lifetime = 0.5 #log_10(ns)
 sparticle_acceptance = 0.3
 uncertainty = 0
-
-# Find mass/lifetime combo in OG data
-mass_bin = 0
-lifetime_bin = 0
-og_acceptance = 0
-
-for entry in og_data_list:
-	if sparticle_mass <= entry[1]:
-		if sparticle_lifetime == entry[2]:
-			og_acceptance = entry[0]
-			print('Mass =', entry[1])
-			print('Lifetime =', entry[2])
-			print('Acceptance in original paper =', og_acceptance)
-			break
 
 print('Acceptance in results =', sparticle_acceptance)
 
 def perc_error(result, value):
 	return ((result - value) / value) * 100
 
+# Find mass/lifetime combo in OG data
+og_acceptance = 0
+mass = 0
+lifetime = 0
+
+for entry in og_data_list:
+	if sparticle_mass < entry[1]:
+		break
+	if sparticle_lifetime == entry[2]:
+		og_acceptance = entry[0]
+		mass = entry[1]
+		lifetime = entry[2]
+
+print('Mass =', mass)
+print('Lifetime =', lifetime)
+print('Acceptance in original paper =', og_acceptance)
 print('Percent error between resutls and paper =', perc_error(sparticle_acceptance, og_acceptance), '%')
