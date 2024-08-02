@@ -342,8 +342,8 @@ results = {
         'efficiency': bincontent/count,
         'yield': bincontent/n_gen}
 
-print("Acceptance is ", count/20000)
-print("Effiencey is ", bincontent/count)
-print("Yield is ", bincontent/20000)
+print("Acceptance is ", results['acceptance'])
+print("Effiencey is ", results['efficiency'])
+print("Yield is ", results['yield'])
 
 yaml.dump(results)
