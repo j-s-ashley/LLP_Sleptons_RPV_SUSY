@@ -12,12 +12,19 @@ import yaml
 # --- YAML ---
 og_file = "analysis/HEPData-ins1831504-v2-Smuon_acceptance.yaml"
 with open(og_file, 'r') as f:
-    og_data = yaml.load(f, Loader=yaml.SafeLoader) 
+	og_data = yaml.load(f, Loader=yaml.SafeLoader) 
 
 # The YAML file lists acceptance values as 'dependent_variables'
-# and mass values as 'independent_variables'
+# and mass and lifetime values as 'independent_variables'
 og_acceptance_list = og_data.get('dependent_variables', {})[0].get('values')
 og_mass_list = og_data.get('independent_variables', {})[0].get('values')
+og_lifetime_list = og_data.get('independent_variables', {})[1].get('values')
+
+og_data_list = []
+
+for i, acc in enumerate(og_acceptance_list):
+	list_entry = [acc, og_mass_list[i], og_lifetime_list[i]]
+	og_data_list.append(list_entry)
 
 #TODO All this section should be read in from RESULTS file
 sparticle_mass = 400 #GeV
@@ -41,4 +48,4 @@ og_acceptance = 0
 #print('Lifetime bin =', lifetime_bin)
 #print('Acceptance in original paper =', og_acceptance)
 
-print(og_mass_list)
+print(og_data_list)
