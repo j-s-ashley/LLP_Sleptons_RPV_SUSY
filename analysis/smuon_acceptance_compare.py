@@ -31,6 +31,15 @@ for t in og_lifetime_dicts:
 	for key, value in t.items():
 		og_lifetime_list.append(value)
 
+# Value matching is clearer with a combined list
+og_data_list = []
+
+i = 0
+while i < len(og_acceptance_list):
+	data_entry = [og_acceptance_list[i], og_mass_list[i], og_lifetime_list[i]]
+	og_data_list.append(data_entry)
+	i += 1
+
 #TODO All this section should be read in from RESULTS file
 sparticle_mass = 400 #GeV
 sparticle_lifetime = 0 #log_10(ns)
@@ -53,4 +62,4 @@ og_acceptance = 0
 #print('Lifetime bin =', lifetime_bin)
 #print('Acceptance in original paper =', og_acceptance)
 
-print(type(og_acceptance_list[0]))
+print(og_data_list)
