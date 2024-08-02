@@ -40,6 +40,10 @@ while i < len(og_acceptance_list):
 	og_data_list.append(data_entry)
 	i += 1
 
+#TODO Set up selection cut script to produce RESULTS file
+numpy_results = "'Selection Cuts'/cut_data.npy"
+results = np.load(numpy_results)
+
 #TODO These values should be read in from RESULTS file
 sparticle_mass = 400 #GeV
 sparticle_lifetime = 0.5 #log_10(ns)
