@@ -52,13 +52,17 @@ lifetime_bin = 0
 og_acceptance = 0
 
 for entry in og_data_list:
-    if sparticle_mass <= entry[1]:
-        if sparticle_lifetime == entry[2]:
-            og_acceptance = entry[0]
-            break
+	if sparticle_mass <= entry[1]:
+		if sparticle_lifetime == entry[2]:
+			og_acceptance = entry[0]
+			print('Mass =', entry[1])
+			print('Lifetime =', entry[2])
+			print('Acceptance in original paper =', og_acceptance)
+			break
 
-#print('Mass bin =', mass_bin)
-#print('Lifetime bin =', lifetime_bin)
-#print('Acceptance in original paper =', og_acceptance)
+print('Acceptance in results =', sparticle_acceptance)
 
-print(og_acceptance)
+def perc_error(result, value):
+	return ((result - value) / value) * 100
+
+print('Percent error between resutls and paper =', perc_error(sparticle_acceptance, og_acceptance), '%')
