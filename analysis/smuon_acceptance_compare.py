@@ -1,15 +1,8 @@
 import numpy as np
 import yaml
 
-# --- CSV ---
-#og_file = "HEPData-ins1831504-v2-Smuon_acceptance.csv"
-#np_og_data = np.genfromtxt(og_file, delimiter=',')
-#og_data = np.ndarray.tolist(np_og_data)
-
-# Removes header line from numpy array
-#del(og_data[0])
-
-# --- YAML ---
+# Read OG data file
+# TODO Replace relpath
 og_file = "analysis/HEPData-ins1831504-v2-Smuon_acceptance.yaml"
 with open(og_file, 'r') as f:
 	og_data = yaml.load(f, Loader=yaml.SafeLoader) 
@@ -22,7 +15,6 @@ og_lifetime_dicts = og_data.get('independent_variables', {})[1].get('values')
 
 # Each entry in the above lists is a dictionary,
 # we only need the values
-
 og_acceptance_list = []
 og_mass_list = []
 og_lifetime_list = []
