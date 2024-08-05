@@ -337,6 +337,7 @@ L = 139 #1/fb
 n_gen=20000 # # of generated events
 print("Expected events: ", (area*sigma*L)/n_gen, "  +/- ",((error*sigma*L)/n_gen), " events")
 
+# Dictionary of resulting values for easy output
 results = {
         'acceptance': count/n_gen,
         'efficiency': bincontent/count,
@@ -346,4 +347,7 @@ print("Acceptance is ", results['acceptance'])
 print("Effiencey is ", results['efficiency'])
 print("Yield is ", results['yield'])
 
-yaml.dump(results)
+# Write output to YAML
+ostream = open('results.yaml', 'w')
+yaml.dump(results, ostream)
+ostream.close()
