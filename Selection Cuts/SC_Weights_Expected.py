@@ -225,7 +225,7 @@ def triggered(event):
 
     return False
  
-hepmc_file = "tag_1_pythia8_events.hepmc"
+hepmc_file = "/eos/home-j/jashley/bubbles/LLP_Sleptons_RPV_SUSY/generate_events/data/smu400.0gev_0.1ns/pool/condor/dir_4108360/smu400.0gev_0.1ns/Events/run_01/out.hepmc"
 
 
 #hist =  ROOT.TH2F("hist", "hist" ,10, 65, 765, 8, 0, 400)
